@@ -9,11 +9,11 @@ export default defineConfig({
    rollupOptions: {
      input: {
        main: resolve(__dirname, "index.html"),
-       contact: resolve(__dirname, "contact.html"),
-       projets: resolve(__dirname, "projets.html"),
-       projet1: resolve(__dirname, "projet1.html"),
-       projet2: resolve(__dirname, "projet2.html"),
-       projet3: resolve(__dirname, "projet3.html"),
+       contact: resolve(__dirname, "pages/contact.html"),
+       projets: resolve(__dirname, "pages/projets.html"),
+       projet1: resolve(__dirname, "pages/projet1.html"),
+       projet2: resolve(__dirname, "pages/projet2.html"),
+       projet3: resolve(__dirname, "pages/projet3.html"),
        // ajoutez d'autres pages si nécessaire
      },
    },
