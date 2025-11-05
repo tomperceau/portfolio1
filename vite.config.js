@@ -10,10 +10,10 @@ export default defineConfig({
      input: {
        main: resolve(__dirname, "index.html"),
        accueil: resolve(__dirname, "pages/contact.html"),
-       plus: resolve(__dirname, "pages/projet.html"),
-       plus: resolve(__dirname, "pages/projet-1.html"),
-       plus: resolve(__dirname, "pages/projet-2.html"),
-       plus: resolve(__dirname, "pages/projet-3.html"),
+       projet: resolve(__dirname, "pages/projet.html"),
+       projet1: resolve(__dirname, "pages/projet-1.html"),
+       projet2: resolve(__dirname, "pages/projet-2.html"),
+       projet3: resolve(__dirname, "pages/projet-3.html"),
        // ajoutez d'autres pages si nécessaire
      },
    },
