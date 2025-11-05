@@ -1,1 +1,163 @@
 @import "tailwindcss";
+
+/* ==============================================
+   1. VARIABLES & CONFIGURATION GLOBALE
+   ============================================== */
+:root {
+    --dark-bg: #121212;
+    --primary-yellow: #FFD700;
+    --light-text: #EAEAEA;
+    --card-bg: #1E1E1E;
+    --border-color: rgba(255, 215, 0, 0.2);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    line-height: 1.6;
+    padding-top: 120px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    background: radial-gradient(600px at var(--x) var(--y), rgba(255, 215, 0, 0.08), transparent 80%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+
+/* ==============================================
+   2. BARRE DE NAVIGATION "LIQUID GLASS"
+   ============================================== */
+header {
+    position: fixed;
+    top: 20px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 90%;
+    max-width: 600px;
+}
+
+.liquid-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(30, 30, 30, 0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    transition: all 0.4s ease;
+}
+
+.logo { color: var(--primary-yellow); font-size: 1.4rem; font-weight: 700; text-decoration: none; transition: all 0.3s ease; }
+.logo:hover { text-shadow: 0 0 10px var(--primary-yellow); transform: scale(1.05); }
+
+.nav-items { list-style: none; display: flex; gap: 10px; }
+.nav-link {
+    color: var(--light-text); text-decoration: none; font-weight: 600; font-size: 0.95rem;
+    padding: 10px 22px; border-radius: 50px; position: relative; z-index: 1; overflow: visible;
+    /* smoother overall transition (color + transform + shadow) */
+    transition: color 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease;
+}
+.nav-link::before {
+    /* use a rounded solid yellow pill behind the link like the CTA */
+    content: ''; position: absolute; top: 50%; left: 50%; width: 100%; height: 100%;
+    transform: translate(-50%, -50%) scale(0.85);
+    background: var(--primary-yellow);
+    border-radius: 50px; z-index: -1; opacity: 0; transition: transform 0.28s ease, opacity 0.28s ease;
+    /* subtle glow */
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.15), 0 2px 6px rgba(0,0,0,0.35);
+}
+.nav-link:hover::before, .nav-link.active::before {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.98;
+}
+.nav-link:hover, .nav-link.active { color: var(--dark-bg); }
+.nav-link.active { font-weight: 700; }
+
+/* ==============================================
+   3. STYLES GÉNÉRAUX & PAGE ACCUEIL
+   ============================================== */
+.page-title { text-align: center; font-size: 2.8rem; margin-bottom: 3rem; color: var(--primary-yellow); }
+
+.hero { display: flex; align-items: center; padding: 4rem 0; gap: 3rem; }
+.hero-text h1 { font-size: 3rem; margin-bottom: 1rem; }
+.hero-text p { font-size: 1.1rem; margin-bottom: 2rem; }
+.hero-image img { border-radius: 50%; width: 280px; height: 280px; object-fit: cover; border: 3px solid var(--primary-yellow); box-shadow: 0 0 25px rgba(255, 215, 0, 0.2); transition: transform 0.4s ease, box-shadow 0.4s ease; }
+.hero-image img:hover { transform: scale(1.05); box-shadow: 0 0 35px rgba(255, 215, 0, 0.4); }
+.cta-button { background-color: transparent; border: 2px solid var(--primary-yellow); color: var(--primary-yellow); padding: 12px 24px; text-decoration: none; font-weight: 600; border-radius: 50px; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; }
+.cta-button:hover { background-color: var(--primary-yellow); color: var(--dark-bg); box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
+
+
+/* ==============================================
+   4. PAGE PROJETS (GRILLE)
+   ============================================== */
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+.project-card-link { text-decoration: none; color: inherit; }
+.project-card { background-color: var(--card-bg); border-radius: 10px; overflow: hidden; border: 1px solid #333; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+.project-card:hover { transform: translateY(-10px); border-color: var(--primary-yellow); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
+.project-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+/* If a project card uses a small icon (illustrator/photoshop), keep it centered and contained */
+.project-card .project-card-icon { width: 100%; height: 200px; object-fit: contain; display: block; padding: 18px; background: rgba(0,0,0,0.05); }
+.project-info { padding: 1.5rem; }
+.project-info h3 { color: var(--primary-yellow); margin-bottom: 0.5rem; }
+
+/* ==============================================
+   5. PAGE PROJET DÉTAILLÉE
+   ============================================== */
+.project-page-content { padding-top: 2rem; }
+.project-title { text-align: center; font-size: 3rem; margin-bottom: 2rem; }
+.project-main-image { width: 100%; height: auto; border-radius: 10px; margin-bottom: 3rem; }
+.project-meta-details { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; background-color: var(--card-bg); padding: 2rem; border-radius: 10px; margin-bottom: 3rem; border: 1px solid #333; }
+.meta-item h4 { color: var(--primary-yellow); font-size: 1.1rem; margin-bottom: 0.5rem; }
+.meta-item p { color: #ccc; }
+.project-body h2 { font-size: 1.8rem; margin-bottom: 1rem; border-left: 3px solid var(--primary-yellow); padding-left: 1rem; }
+.project-body p { margin-bottom: 2rem; line-height: 1.8; color: #ddd; }
+.project-gallery { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem; }
+.project-gallery img { flex: 1 1 400px; width: 100%; border-radius: 8px; object-fit: cover; }
+
+
+/* ==============================================
+   6. PAGE CONTACT (CARTES) -- LE VOILÀ !
+   ============================================== */
+.contact-intro { text-align: center; margin-bottom: 3rem; font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+.contact-card { background-color: var(--card-bg); border: 1px solid #333; padding: 2.5rem 2rem; border-radius: 10px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+.contact-card:hover { transform: translateY(-10px); border-color: var(--primary-yellow); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
+.contact-card i { font-size: 3rem; color: var(--primary-yellow); margin-bottom: 1.5rem; }
+.contact-card h3 { font-size: 1.5rem; margin-bottom: 0.75rem; }
+.contact-card p { color: #aaa; line-height: 1.5; }
+.contact-link { display: inline-block; margin-top: 1.5rem; padding: 10px 20px; border: 1px solid var(--primary-yellow); color: var(--primary-yellow); text-decoration: none; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; }
+.contact-link:hover { background-color: var(--primary-yellow); color: var(--dark-bg); }
+
+
+/* ==============================================
+   7. FOOTER & AUTRES
+   ============================================== */
+footer { text-align: center; padding: 2rem; margin-top: 3rem; border-top: 1px solid #222; color: #888; }
+.reveal { position: relative; opacity: 0; transform: translateY(50px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ==============================================
+   8. RESPONSIVE
+   ============================================== */
+@media (max-width: 768px) {
+    /* Styles pour tablettes */
+}
+@media (max-width: 480px) {
+    /* Styles pour mobiles */
+}

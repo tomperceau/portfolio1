@@ -1,11 +1,49 @@
+
+
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Tom Perceau</title>
     <link href="/src/style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <h1 class="text-3xl font-bold underline">Hello world!</h1>
-  </body>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav class="liquid-nav">
+        <a href="index.html" class="logo">Tom Perceau</a>
+        <ul class="nav-items">
+            <li><a href="index.html" class="nav-link">Accueil</a></li>
+            <li><a href="projets.html" class="nav-link">Projets</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Salut, moi c'est Tom</h1>
+                <p>Étudiant en 2ème année de BUT MMI, passionné par la création d'expériences numériques, du design à la programmation. Bienvenue dans mon univers.</p>
+                <a href="projets.html" class="cta-button">Découvrir mes projets</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/300" alt="Photo de profil">
+            </div>
+        </section>
+
+        <section class="about">
+            <h2>À propos de moi</h2>
+            <p>Actuellement en BUT Métiers du Multimédia et de l'Internet, je touche à tout ce qui concerne le web. J'aime autant concevoir une interface épurée sur Figma que lui donner vie avec du code (HTML, CSS, JavaScript). Je suis curieux, rigoureux et toujours prêt à apprendre de nouvelles technologies pour monter en compétence.</p>
+        </section>
+    </main>
+
+    <footer>
+    <p>&copy; 2025 Tom Perceau. Tous droits réservés.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
 </html>
