@@ -1,27 +1,27 @@
-# Simple workflow for deploying static content to GitHub Pages
+# Workflow corrigé pour un site statique simple
 name: Deploy static content to Pages
 
 on:
-  # Runs on pushes targeting the default branch
+  # Se déclenche sur les push vers la branche "main"
   push:
     branches: ["main"]
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Permet de le lancer manuellement depuis l'onglet Actions
   workflow_dispatch:
 
-# Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
+# Autorisations pour le déploiement sur GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
+# Un seul déploiement concurrent
 concurrency:
   group: "pages"
   cancel-in-progress: true
 
 jobs:
-  # Single deploy job since we're just deploying
+  # Tâche de déploiement
   deploy:
     environment:
       name: github-pages
@@ -30,22 +30,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-          cache: "npm"
-      - name: Install dependencies
-        run: npm ci
-      - name: Build
-        run: npm run build
+      
+      # ⛔ ÉTAPES NODE.JS SUPPRIMÉES ⛔
+      # Les étapes "Set up Node", "Install dependencies" et "Build"
+      # ont été retirées car elles ne sont pas nécessaires
+      # pour un site statique pur.
+      
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          # Upload dist folder
-          path: "./dist"
+          # MODIFICATION IMPORTANTE :
+          # On téléverse le dossier racine ('.') où se trouvent
+          # vos fichiers index.html, src, assets, etc.,
+          # au lieu d'un dossier "./dist" qui n'existe pas.
+          path: "."
+          
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
