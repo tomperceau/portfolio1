@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet: Site de Streaming - Tom Perceau</title>
+    
+    <link rel="stylesheet" href="../src/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Styles copiés pour les boutons et la vidéo */
+        .cta-button { 
+            background-color: transparent; border: 2px solid var(--primary-yellow); color: var(--primary-yellow); 
+            padding: 12px 24px; text-decoration: none; font-weight: 600; border-radius: 50px; 
+            transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px;
+            display: inline-block; margin-top: 1.5rem; margin-bottom: 1rem; margin-right: 1rem;
+        }
+        .cta-button:hover { 
+            background-color: var(--primary-yellow); color: var(--dark-bg); 
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); 
+        }
+        .project-body img {
+            max-width: 100%; height: auto; border-radius: 8px;
+            margin: 2rem 0; display: block;
+        }
+        .video-responsive {
+            overflow: hidden; padding-bottom: 56.25%; position: relative; height: 0;
+            margin: 2rem 0; border-radius: 8px;
+        }
+        .video-responsive iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        }
+        .project-body a {
+            color: var(--primary-yellow); text-decoration: underline; font-weight: 600;
+        }
+        .project-body a:hover { text-decoration: none; }
+    </style>
+</head>
+
+<body>
+    <div class="custom-cursor-dot"></div>
+    <div class="custom-cursor-outline"></div>
+
+<header>
+    <nav class="liquid-nav">
+        <a href="../index.html" class="logo">Tom Perceau</a>
+        <ul class="nav-items">
+            <li><a href="../index.html" class="nav-link">Accueil</a></li>
+            <li><a href="projets.html" class="nav-link active">Projets</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="container">
+        <div class="project-page-content">
+            <h1 class="project-title">Site Web de Streaming</h1>
+
+            <img src="../assets/site203.png" alt="Bannière du projet Site de Streaming" class="project-main-image">
+
+            <div class="project-meta-details">
+                <div class="meta-item">
+                    <h4>Compétences</h4>
+                    <p>Développement Web</p>
+                </div>
+                <div class="meta-item">
+                    <h4>Outils</h4>
+                    <p>VS Code, HTML, CSS, JavaScript, PHP, MySQL</p>
+                </div>
+                <div class="meta-item">
+                    <h4>Rôle</h4>
+                    <p>Développeur Front/Back</p>
+                </div>
+            </div>
+
+            <div class="project-body">
+                <h2>But du projet</h2>
+                <p>
+                    L'objectif de ce projet était de concevoir et développer un site web de streaming de type "Netflix" entièrement fonctionnel. Le site devait être relié à une base de données MySQL pour gérer les utilisateurs, les films, les séries et les catégories, avec un back-end en PHP pour gérer toute la logique.
+                </p>
+
+                <a href="https://www.t-perceau.mmi-limoges.fr/SAE2.03-Perceau/app/index.html" class="cta-button" target="_blank" rel="noopener noreferrer">
+                    Voir le site (Principal)
+                </a>
+                <a href="https://www.t-perceau.mmi-limoges.fr/SAE2.03-Perceau-rts/app/index.html" class="cta-button" target="_blank" rel="noopener noreferrer">
+                    Voir le site (RTS)
+                </a>
+
+                <h2>Mon explication et ma démarche</h2>
+                <p>
+                    Le projet a été divisé en trois parties principales : le back-end, le front-end et le panneau d'administration.
+                </p>
+
+                <h3>1. Back-end (PHP & MySQL)</h3>
+                <p>
+                    La première étape a été la modélisation et la création de la base de données MySQL pour stocker les informations sur les utilisateurs (avec mots de passe hachés), le catalogue de médias (films, séries, épisodes) et les genres. J'ai ensuite développé une API en PHP pour gérer les connexions, l'inscription, et pour exposer les données du catalogue au front-end de manière sécurisée.
+                </p>
+                
+                <h3>2. Front-end (HTML, CSS, JavaScript)</h3>
+                <p>
+                    L'interface utilisateur a été développée en HTML, CSS et JavaScript pur. J'ai créé un design sombre (dark mode) inspiré des plateformes de streaming modernes. Le JavaScript est utilisé pour appeler l'API PHP, récupérer les listes de films et les afficher dynamiquement sur la page, permettant une navigation fluide sans rechargement.
+                </p>
+                
+                <h3>3. Panneau d'Administration (PHP)</h3>
+                <p>
+                    Pour gérer le contenu du site, j'ai développé une interface d'administration simple. Cette page, également en PHP, permet aux administrateurs de se connecter et d'effectuer des opérations CRUD (Create, Read, Update, Delete) directement sur la base de données. Il est ainsi possible d'ajouter de nouveaux films, de modifier les informations d'un profil utilisateur ou d'ajouter de nouveaux profils.
+                </p>
+                
+                <img src="../assets/admin203.png" alt="Panneau d'administration du site de streaming">
+
+    
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+    <p>&copy; 2025 Tom Perceau. Tous droits réservés.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
