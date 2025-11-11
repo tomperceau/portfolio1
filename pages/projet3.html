@@ -3,18 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet: Site Vitrine - Tom Perceau</title>
+    <title>Projet: Expérience VR Anne-Franck - Tom Perceau</title>
+    
     <link rel="stylesheet" href="../src/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* S'assure que le bouton CTA est stylé comme sur l'accueil */
+        .cta-button { 
+            background-color: transparent; 
+            border: 2px solid var(--primary-yellow); 
+            color: var(--primary-yellow); 
+            padding: 12px 24px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            border-radius: 50px; 
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block; /* Important */
+            margin-top: 1.5rem; /* Espace */
+            margin-bottom: 2rem; /* Ajout d'espace après le bouton */
+        }
+        .cta-button:hover { 
+            background-color: var(--primary-yellow); 
+            color: var(--dark-bg); 
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); 
+        }
+        /* Style additionnel si les images doivent être affichées en pleine largeur entre les paragraphes */
+        .project-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 2rem 0; /* Espace au-dessus et en dessous des images seules */
+            display: block; /* S'assure qu'elles prennent toute la largeur disponible */
+        }
+    </style>
 </head>
+
+<body>
+        <div class="custom-cursor-dot"></div>
+    <div class="custom-cursor-outline"></div>
 <header>
     <nav class="liquid-nav">
         <a href="../index.html" class="logo">Tom Perceau</a>
         <ul class="nav-items">
             <li><a href="../index.html" class="nav-link">Accueil</a></li>
-            <li><a href="projets.html" class="nav-link">Projets</a></li>
+            <li><a href="projets.html" class="nav-link active">Projets</a></li>
             <li><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
     </nav>
@@ -22,40 +59,68 @@
 
     <main class="container">
         <div class="project-page-content">
-            <h1 class="project-title">Site Vitrine "Le Goût des Alpes"</h1>
-
-            <img src="https://via.placeholder.com/1100x500" alt="Bannière du projet" class="project-main-image">
+            <h1 class="project-title">Promotion de l'expérience VR du site d'Anne-Franck</h1>
 
             <div class="project-meta-details">
                 <div class="meta-item">
                     <h4>Compétences</h4>
-                    <p>HTML5, CSS3 (Flexbox/Grid), JavaScript, Maquettage</p>
+                    <p>Stratégie de communication, UI/UX Design, Gestion de Projet, Benchmark</p>
                 </div>
                 <div class="meta-item">
                     <h4>Outils</h4>
-                    <p>Visual Studio Code, Figma, Git</p>
+                    <p>Figma, Trello</p>
                 </div>
                 <div class="meta-item">
                     <h4>Rôle</h4>
-                    <p>Développeur Front-End & UI Designer</p>
+                    <p>Chef de Projet Digital & UI/UX Designer</p>
                 </div>
             </div>
 
             <div class="project-body">
                 <h2>But du projet</h2>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat.
+                    L'objectif de ce projet était de concevoir une recommandation stratégique complète pour le lancement et la promotion d'une nouvelle expérience de réalité virtuelle (VR) pour le site d'Anne-Franck.
                 </p>
+                <p>
+                    Ma mission couvrait l'ensemble du cycle de vie du projet : de l'analyse initiale et la conception des maquettes, jusqu'à la planification d'une campagne de communication digitale et la gestion des tâches.
+                </p>
+
+                <a href="https://www.figma.com/design/GFhnq1u6s3klvZ6ea7DZBn/SAE-102-106?node-id=0-1&t=rLMAncbTbaSFbBoC-1" class="cta-button" target="_blank" rel="noopener noreferrer">
+                    Voir les maquettes sur Figma
+                </a>
 
                 <h2>Mon explication et ma démarche</h2>
                 <p>
-                    Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh.
+                    Pour mener à bien ce projet, j'ai structuré ma démarche en trois phases principales :
                 </p>
 
+                <h3>1. Analyse & Conception (UX/UI)</h3>
+                <p>
+                    La première phase a consisté en une analyse approfondie des cibles via des **personae** et user stories, pour mieux comprendre les attentes de nos futurs utilisateurs. J'ai ensuite réalisé un benchmark concurrentiel et des sources d'inspiration pour affiner notre stratégie.
+                </p>
+                
+                <img src="../assets/personae.png" alt="Exemple de persona créé pour le projet">
+                
+                <p>
+                    Cette recherche a abouti à la création de wireframes et de maquettes détaillées sur **Figma**, définissant l'architecture de l'information et le parcours utilisateur pour l'expérience VR.
+                </p>
+                
+                <img src="../assets/figmaannefranck.png" alt="Maquettes et wireframes réalisés sur Figma">
+
+                <h3>2. Plan de Communication Digitale</h3>
+                <p>
+                    En parallèle, j'ai développé un plan de communication pour les réseaux sociaux. Après avoir analysé les stratégies de 3 concurrents directs, j'ai sélectionné les plateformes les plus pertinentes et défini une ligne éditoriale avec un calendrier de publications.
+                </p>
+                
+                <h3>3. Gestion de Projet</h3>
+                <p>
+                    Pour assurer un suivi rigoureux, l'ensemble du projet a été géré sur **Trello**. J'ai mis en place deux tableaux : un "Planning prévisionnel" pour définir les jalons et un "Planning réel" pour suivre l'avancement des tâches quotidiennes et s'adapter aux imprévus.
+                </p>
+                
+                <img src="../assets/trello.png" alt="Tableaux de gestion de projet Trello">
+
                 <div class="project-gallery">
-                    <img src="https://via.placeholder.com/500x300" alt="Détail du projet 1">
-                    <img src="https://via.placeholder.com/500x300" alt="Détail du projet 2">
-                </div>
+                    </div>
             </div>
 
         </div>

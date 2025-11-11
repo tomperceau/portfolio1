@@ -1,35 +1,91 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    // --- 1. EFFET "AURORE" QUI SUIT LA SOURIS ---
-    // Ce script met à jour les variables CSS '--x' et '--y' 
-    // avec la position de la souris, ce qui déplace le dégradé en fond.
-    document.body.addEventListener('mousemove', e => {
-        // e.clientX et e.clientY nous donnent la position de la souris
-        document.documentElement.style.setProperty('--x', e.clientX + 'px');
-        document.documentElement.style.setProperty('--y', e.clientY + 'px');
-    });
+    const body = document.body;
+
+    // --- 1. EFFET "AURORE" QUI SUIT LA SOURIS ---
+    body.addEventListener('mousemove', e => {
+        document.documentElement.style.setProperty('--x', e.clientX + 'px');
+        document.documentElement.style.setProperty('--y', e.clientY + 'px');
+    });
 
 
-    // --- 2. ANIMATION D'APPARITION AU SCROLL ---
-    // Cette partie va ajouter une classe 'visible' aux éléments
-    // qui ont la classe 'reveal' lorsqu'ils deviennent visibles à l'écran.
+    // --- 2. ANIMATION D'APPARITION AU SCROLL ---
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    const elementsToReveal = document.querySelectorAll('.reveal');
+    elementsToReveal.forEach(el => observer.observe(el));
+
+
+    // --- 3. NOUVEAU : CURSEUR PERSONNALISÉ ---
+    const cursorDot = document.querySelector('.custom-cursor-dot');
+    const cursorOutline = document.querySelector('.custom-cursor-outline');
     
-    // On crée un "observateur" qui regarde ce qui entre à l'écran
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            // Si l'élément est en train d'entrer dans le champ de vision...
-            if (entry.isIntersecting) {
-                // ... on lui ajoute la classe 'visible'
-                entry.target.classList.add('visible');
-            }
-        });
-    }, {
-        threshold: 0.1 // L'animation se déclenche quand 10% de l'élément est visible
+    // Variable pour gérer l'effet de "clic" (scale)
+    let currentScale = 1;
+
+    // Mettre à jour la position des deux curseurs
+    window.addEventListener('mousemove', function(e) {
+        // Position de la souris
+        const posX = e.clientX;
+        const posY = e.clientY;
+
+        // Le point central suit précisément la souris
+        if (cursorDot) {
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+        }
+
+        // Le cercle extérieur suit avec un léger délai (grâce au 'transition' en CSS)
+        // On combine le translate (position) et le scale (clic)
+        if (cursorOutline) {
+            cursorOutline.style.transform = `translate(${posX}px, ${posY}px) scale(${currentScale})`;
+        }
     });
 
-    // On cherche tous les éléments qu'on veut animer (ceux avec la classe .reveal)
-    const elementsToReveal = document.querySelectorAll('.reveal');
-    // On demande à l'observateur de surveiller chacun de ces éléments
-    elementsToReveal.forEach(el => observer.observe(el));
+    // Effet au clic (mousedown)
+    document.addEventListener('mousedown', () => {
+        currentScale = 0.9; // Rétrécit le cercle
+        body.classList.add('cursor-mousedown'); // Augmente l'opacité (via CSS)
+    });
+
+    // Effet au relâchement du clic (mouseup)
+    document.addEventListener('mouseup', () => {
+        currentScale = 1; // Revient à la taille normale
+        body.classList.remove('cursor-mousedown');
+    });
+
+    // Effet au SURVOL des éléments interactifs
+    // On sélectionne tous les liens, boutons, et éléments cliquables
+    const interactiveElements = document.querySelectorAll(
+        'a, button, .nav-link, .project-card-link, .logo, .contact-link'
+    );
+
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            body.classList.add('cursor-hover'); // Ajoute la classe pour agrandir le cercle
+        });
+        el.addEventListener('mouseleave', () => {
+            body.classList.remove('cursor-hover'); // Retire la classe
+        });
+    });
+
+    // Cacher le curseur s'il sort de la fenêtre
+    document.addEventListener('mouseleave', () => {
+        if (cursorDot) cursorDot.style.opacity = '0';
+        if (cursorOutline) cursorOutline.style.opacity = '0';
+    });
+    // Le remontrer s'il revient
+    document.addEventListener('mouseenter', () => {
+        if (cursorDot) cursorDot.style.opacity = '1';
+        if (cursorOutline) cursorOutline.style.opacity = '0.5'; // Opacité par défaut
+    });
 
 });

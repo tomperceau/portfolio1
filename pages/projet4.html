@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet: Application MoveQuest - Tom Perceau</title>
+    
+    <link rel="stylesheet" href="../src/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* S'assure que le bouton CTA est stylé (copié de projet3) */
+        .cta-button { 
+            background-color: transparent; 
+            border: 2px solid var(--primary-yellow); 
+            color: var(--primary-yellow); 
+            padding: 12px 24px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            border-radius: 50px; 
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block; /* Important */
+            margin-top: 1.5rem; /* Espace */
+            margin-bottom: 2rem; /* Ajout d'espace après le bouton */
+        }
+        .cta-button:hover { 
+            background-color: var(--primary-yellow); 
+            color: var(--dark-bg); 
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); 
+        }
+        .project-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 2rem 0;
+            display: block;
+        }
+
+        /* --- NOUVEAUX STYLES AJOUTÉS --- */
+        
+        /* Conteneur pour la vidéo YouTube responsive */
+        .video-responsive {
+            overflow: hidden;
+            padding-bottom: 56.25%; /* Format 16:9 */
+            position: relative;
+            height: 0;
+            margin: 2rem 0;
+            border-radius: 8px; /* Bords arrondis comme les images */
+        }
+        .video-responsive iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Style pour les liens dans le corps du texte */
+        .project-body a {
+            color: var(--primary-yellow);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        .project-body a:hover {
+            text-decoration: none;
+        }
+        /* --- FIN DES NOUVEAUX STYLES --- */
+    </style>
+</head>
+
+<body>
+        <div class="custom-cursor-dot"></div>
+    <div class="custom-cursor-outline"></div>
+<header>
+    <nav class="liquid-nav">
+        <a href="../index.html" class="logo">Tom Perceau</a>
+        <ul class="nav-items">
+            <li><a href="../index.html" class="nav-link">Accueil</a></li>
+            <li><a href="projets.html" class="nav-link active">Projets</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="container">
+        <div class="project-page-content">
+            <h1 class="project-title">Application MoveQuest</h1>
+
+            <img src="../assets/hemera.png" alt="Bannière du projet MoveQuest" class="project-main-image">
+
+            <div class="project-meta-details">
+                <div class="meta-item">
+                    <h4>Compétences</h4>
+                    <p>UI/UX Design, Communication, Production Vidéo</p>
+                </div>
+                <div class="meta-item">
+                    <h4>Outils</h4>
+                    <p>Figma, DaVinci Resolve, Caméra Vidéo</p>
+                </div>
+                <div class="meta-item">
+                    <h4>Rôle</h4>
+                    <p>UI/UX Designer & Chargé de Communication</p>
+                </div>
+            </div>
+
+            <div class="project-body">
+                <h2>But du projet</h2>
+                <p>
+                    L'objectif principal de ce projet était de concevoir "MoveQuest", une application sportive exclusive pour les coworkers de l'espace Hemera. L'application vise à encourager l'activité physique, à faciliter l'organisation d'événements sportifs et à renforcer la cohésion au sein de la communauté des coworkers.
+                </p>
+
+                <a href="https://www.figma.com/design/A1isjAMHP2EUgi1y0RZZZn/SA%C3%892.02?node-id=26-5&t=uhimuu7ghDE6sIgj-1" class="cta-button" target="_blank" rel="noopener noreferrer">
+                    Voir le prototype fonctionnel
+                </a>
+
+                <h2>Mon explication et ma démarche</h2>
+                <p>
+                    Ma mission s'est articulée autour de trois axes majeurs : la conception de l'application (UI/UX), la création de sa vidéo promotionnelle et la communication de lancement.
+                </p>
+
+                <h3>1. Conception UI/UX (Figma)</h3>
+                <p>
+                    J'ai commencé par une phase de recherche pour définir les besoins des utilisateurs au sein d'Hemera (ateliers, sondages). Ensuite, sur Figma, j'ai développé les **wireframes** initiaux, puis les maquettes haute-fidélité. L'ensemble a été assemblé en un **prototype fonctionnel** et interactif, permettant de tester le parcours utilisateur de création et d'inscription à un événement sportif.
+                </p>
+                
+                <img src="../assets/protohemera.png" alt="Prototype de l'application MoveQuest sur Figma">
+
+                <h3>2. Promotion Vidéo (DaVinci Resolve)</h3>
+                <p>
+                    Pour présenter le concept et générer de l'enthousiasme, j'ai réalisé une courte vidéo promotionnelle. J'ai d'abord créé un **storyboard** pour planifier les séquences, puis j'ai géré le tournage de plusieurs scènes de sport et d'interaction. Enfin, j'ai effectué le montage, l'étalonnage et le mixage audio dans DaVinci Resolve pour un rendu dynamique.
+                </p>
+                
+                <img src="../assets/storyboardhemera.png" alt="Storyboard de la vidéo MoveQuest">
+
+                <div class="video-responsive">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/kbFX_GnHomc" title="Vidéo promotionnelle MoveQuest" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+
+                <h3>3. Communication & Lancement</h3>
+                <p>
+                    En complément de la vidéo, j'ai rédigé un <a href="https://docs.google.com/document/d/1NtI98fLdDVwRvh1q1n1UuIBqzR3aYM2tFnOLQrypfQQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer"><strong>communiqué de presse</strong></a> ciblé pour la communication interne d'Hemera. Ce document annonçait officiellement le lancement de "MoveQuest", en soulignant les bénéfices pour la communauté et en guidant les utilisateurs pour leur première connexion.
+                </p>
+
+                <div class="project-gallery">
+                    </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+    <p>&copy; 2025 Tom Perceau. Tous droits réservés.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

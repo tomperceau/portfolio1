@@ -103,17 +103,104 @@ header {
 
 
 /* ==============================================
-   4. PAGE PROJETS (GRILLE)
-   ============================================== */
-.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
-.project-card-link { text-decoration: none; color: inherit; }
-.project-card { background-color: var(--card-bg); border-radius: 10px; overflow: hidden; border: 1px solid #333; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
-.project-card:hover { transform: translateY(-10px); border-color: var(--primary-yellow); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
-.project-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
-/* If a project card uses a small icon (illustrator/photoshop), keep it centered and contained */
-.project-card .project-card-icon { width: 100%; height: 200px; object-fit: contain; display: block; padding: 18px; background: rgba(0,0,0,0.05); }
-.project-info { padding: 1.5rem; }
-.project-info h3 { color: var(--primary-yellow); margin-bottom: 0.5rem; }
+   4. PAGE PROJETS (GRILLE) - CORRIGÉ
+   ============================================== */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.project-card-link {
+    text-decoration: none;
+    color: inherit;
+    
+    /* --- AJOUTS --- */
+    /* Force le lien (l'item de la grille) à s'étirer en hauteur */
+    display: flex;
+    height: 100%; 
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    
+    /* --- AJOUTS --- */
+    /* Transforme la carte en conteneur flex vertical */
+    display: flex;
+    flex-direction: column;
+    /* S'assure que la carte remplit le lien */
+    width: 100%;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-yellow);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    /* Empêche l'image de rétrécir */
+    flex-shrink: 0;
+}
+
+.project-card .project-card-icon {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    display: block;
+    padding: 18px;
+    background: rgba(0,0,0,0.05);
+    /* Empêche l'icône de rétrécir */
+    flex-shrink: 0;
+}
+
+.project-info {
+    padding: 1.5rem;
+    
+    /* --- AJOUTS --- */
+    /* Fait en sorte que cette section grandisse pour remplir l'espace vide */
+    flex-grow: 1; 
+    /* La transforme en conteneur flex vertical (pour pousser les tags en bas) */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-info h3 {
+    color: var(--primary-yellow);
+    margin-bottom: 0.5rem;
+}
+
+/* Conteneur pour les nouveaux tags */
+.project-tags {
+    /* --- MODIFICATION --- */
+    /* Pousse les tags tout en bas de la carte */
+    margin-top: auto;
+    /* Ajoute un espace au-dessus (qui était géré par margin-top avant) */
+    padding-top: 12px;
+    
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Style pour chaque tag individuel */
+.tag {
+    display: inline-block;
+    padding: 5px 12px;
+    background-color: #3a3a3a; 
+    color: var(--light-text);
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 300;
+}
 
 /* ==============================================
    5. PAGE PROJET DÉTAILLÉE
@@ -178,4 +265,72 @@ footer { text-align: center; padding: 2rem; margin-top: 3rem; border-top: 1px so
 }
 @media (max-width: 480px) {
     /* Styles pour mobiles */
+}
+
+
+/* ==============================================
+   9. CURSEUR PERSONNALISÉ
+   ============================================== */
+
+/* 1. On cache le curseur par défaut sur tout le site */
+body {
+    cursor: none;
+    position: relative; /* Contexte pour le z-index */
+}
+
+/* 2. Le point central jaune (le curseur principal) */
+.custom-cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-yellow);
+    border-radius: 50%;
+    /* Très important: pour que la souris clique "à travers" */
+    pointer-events: none; 
+    z-index: 9999;
+    transition: opacity 0.3s ease; 
+}
+
+/* 3. Le cercle extérieur (l'effet de halo/traînée) */
+.custom-cursor-outline {
+    position: fixed;
+    /* Décalage initial pour centrer (moitié de la largeur/hauteur) */
+    top: -20px; 
+    left: -20px;
+    width: 40px;
+    height: 40px;
+    
+    border: 2px solid var(--primary-yellow);
+    border-radius: 50%;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 9998;
+    
+    /* La transition adoucira le mouvement (géré par JS) */
+    transition: transform 0.15s ease-out, /* Inclut le scale() */
+                width 0.3s ease, 
+                height 0.3s ease,
+                top 0.3s ease,
+                left 0.3s ease,
+                opacity 0.3s ease;
+}
+
+/* --- 4. Effets (gérés par JS via des classes sur le <body>) --- */
+
+/* Effet au SURVOL d'un lien/bouton */
+body.cursor-hover .custom-cursor-outline {
+    width: 60px;
+    height: 60px;
+    /* Ajustement pour le centrage */
+    top: -30px; 
+    left: -30px; 
+    opacity: 0.8;
+}
+
+/* Effet au CLIC */
+body.cursor-mousedown .custom-cursor-outline {
+    /* Le scale (rétrécissement) est géré par JS */
+    opacity: 1; 
 }
